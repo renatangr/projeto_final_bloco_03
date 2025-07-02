@@ -19,7 +19,7 @@ function Home() {
                             <div className="flex gap-4">
                                 <ModalProduto />
                             </div>
-                        </div>
+                    </div>
                 </div>
 
                 {/* Imagem */}
@@ -33,7 +33,7 @@ function Home() {
             </div>
         </div>
         <div className="bg-gradient-to-r from-emerald-100 via-emerald-50 to-emerald-100 flex">
-                         <ListaProdutos />
+                <ListaProdutos />
         </div>
         </>
     );

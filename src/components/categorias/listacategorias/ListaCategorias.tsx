@@ -2,7 +2,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import CardCategorias from "../cardcategorias/CardCategorias";
 import { useEffect, useState } from "react";
 import type Categoria from "../../../models/Categoria";
-import { buscar, buscarCategoriaNome } from "../../../services/Service";
+import { buscar } from "../../../services/Service";
 import { Bars } from "react-loader-spinner";
 
 function ListaCategorias() {
@@ -13,23 +13,19 @@ function ListaCategorias() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [categoria, setCategoria] = useState<Categoria[]>([]);
 
-  async function buscarCategorias() {
+   async function buscarCategoria() {
     setIsLoading(true);
     try {
-      if (nomeBuscado) {
-        await buscarCategoriaNome(nomeBuscado, setCategoria);
-      } else {
         await buscar("/categorias", setCategoria);
-      }
-    } catch (error: any) {
-      console.log(error);
-    }
+        } catch (error: any) {
+            console.log(error);
+        }
     setIsLoading(false);
-  }
+    }
 
-  useEffect(() => {
-    buscarCategorias();
-  }, [nomeBuscado]);
+    useEffect(() => {
+    buscarCategoria();
+    }, [categoria.length]);
 
   return (
     <>
@@ -49,12 +45,6 @@ function ListaCategorias() {
 
       <div className="flex justify-center w-full p-10">
         <div className="container flex flex-col mx-2">
-          {(!isLoading && categoria.length === 0) && (
-            <span className="text-3xl text-center my-8 text-emerald-950">
-              Nenhuma categoria foi encontrada{nomeBuscado && ` para "${nomeBuscado}"`}.
-            </span>
-          )}
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {categoria.map((categoria) => (
               <CardCategorias key={categoria.id} categoria={categoria} />
