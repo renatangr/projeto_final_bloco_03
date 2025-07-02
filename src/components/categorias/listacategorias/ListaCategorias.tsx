@@ -50,7 +50,7 @@ function ListaCategorias() {
       <div className="flex justify-center w-full my-4">
         <div className="container flex flex-col mx-2">
           {(!isLoading && categoria.length === 0) && (
-            <span className="text-3xl text-center my-8">
+            <span className="text-3xl text-center my-8 text-emerald-950">
               Nenhuma categoria foi encontrada{nomeBuscado && ` para "${nomeBuscado}"`}.
             </span>
           )}

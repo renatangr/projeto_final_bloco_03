@@ -1,7 +1,28 @@
 import { BasketIcon, UserCircleIcon } from "@phosphor-icons/react"
-import { Link } from "react-router-dom"
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom"
+import { buscarCategoriaNome } from "../../services/Service";
 
 function Navbar() {
+
+    const [termoBusca, setTermoBusca] = useState("");
+    const navigate = useNavigate();
+
+    const handleBuscar = () => {
+        if (termoBusca.trim() !== "") {
+        buscarCategoriaNome(termoBusca, (res: any) => {
+            console.log("Categorias encontradas:", res)
+            navigate(`/categorias?nome=${encodeURIComponent(termoBusca)}`)
+        });
+        }
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+        handleBuscar();
+        }
+    }
+
     return (
         <>
             <div className='w-full flex justify-center py-4
@@ -21,11 +42,15 @@ function Navbar() {
                         <input
                             type="text"
                             placeholder="Pesquisar"
+                            value={termoBusca}
+                            onChange={(e) => setTermoBusca(e.target.value)}
+                            onKeyDown={handleKeyDown}
                             className="flex-1 px-4 py-2 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-500 font-normal"
                         />
                         <button
-                            className="p-3 rounded-md hover:opacity-90"
+                            className="p-3 rounded-md hover:opacity-90 cursor-pointer"
                             style={{ backgroundColor: "#163725" }}
+                            onClick={handleBuscar}
                         >
                             <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -34,6 +59,7 @@ function Navbar() {
                             viewBox="0 0 24 24"
                             stroke="currentColor"
                             strokeWidth="2"
+                            onClick={handleBuscar}
                             >
                             <path
                                 strokeLinecap="round"
@@ -42,7 +68,7 @@ function Navbar() {
                             />
                             </svg>
                         </button>
-                        </div>
+                    </div>
                     <div className='flex gap-4 font-medium'>
                         <Link to="/categorias" className="hover:underline">
                             Categorias
