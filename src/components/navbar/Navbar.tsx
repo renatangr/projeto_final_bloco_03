@@ -12,9 +12,35 @@ function Navbar() {
                     className="w-12 h-12 justify-center"
                 />
             
-                <div className="container flex justify-between text-lg px-5 py-2 items-center font-bold">
+                <div className="container flex justify-between text-lg px-5 py-1 items-center font-bold">
                     FARMÁCIA
 
+                    <div className="flex items-center flex-1 max-w-md mx-4 gap-2">
+                        <input
+                            type="text"
+                            placeholder="Pesquisar"
+                            className="flex-1 px-4 py-2 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-500 font-normal"
+                        />
+                        <button
+                            className="p-3 rounded-md hover:opacity-90"
+                            style={{ backgroundColor: "#163725" }}
+                        >
+                            <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5 text-white"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"
+                            />
+                            </svg>
+                        </button>
+                        </div>
                     <div className='flex gap-4 font-medium'>
                         Categorias
                         Cadastrar Categoria
