@@ -25,11 +25,11 @@ export const deletar = async(url: string) => {
 
 // Método adicional de busca
 
-export const buscarCategoriaNome = async (nome: string, setDados: Function) => {
+export const buscarProdutoNome = async (nome: string, setDados: Function) => {
     try {
-        const resposta = await api.get(`/categorias/nome/${nome}`);
+        const resposta = await api.get(`/produtos/nome/${nome}`);
         setDados(resposta.data);
     } catch (error) {
-        console.error("Erro ao buscar categoria pelo nome:", error);
+        console.error("Erro ao buscar produto pelo nome:", error);
     }
 };

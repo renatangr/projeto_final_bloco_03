@@ -1,7 +1,7 @@
 import { BasketIcon, UserCircleIcon } from "@phosphor-icons/react"
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
-import { buscarCategoriaNome } from "../../services/Service";
+import { buscarProdutoNome } from "../../services/Service";
 
 function Navbar() {
 
@@ -10,9 +10,9 @@ function Navbar() {
 
     const handleBuscar = () => {
         if (termoBusca.trim() !== "") {
-        buscarCategoriaNome(termoBusca, (res: any) => {
-            console.log("Categorias encontradas:", res)
-            navigate(`/categorias?nome=${encodeURIComponent(termoBusca)}`)
+        buscarProdutoNome(termoBusca, (res: any) => {
+            console.log("Produtos encontrados:", res)
+            navigate(`/produtos?nome=${encodeURIComponent(termoBusca)}`)
         });
         }
     };
@@ -70,6 +70,7 @@ function Navbar() {
                         </button>
                     </div>
                     <div className='flex gap-4 font-medium'>
+                        <Link to='/produtos' className='hover:underline'>Produtos</Link>
                         <Link to="/categorias" className="hover:underline">
                             Categorias
                         </Link>
