@@ -1,4 +1,5 @@
 import { BasketIcon, UserCircleIcon } from "@phosphor-icons/react"
+import { Link } from "react-router-dom"
 
 function Navbar() {
     return (
@@ -13,7 +14,8 @@ function Navbar() {
                 />
             
                 <div className="container flex justify-between text-lg px-5 py-1 items-center font-bold">
-                    FARMÁCIA
+                    <Link to ="/">FARMÁCIA</Link>
+                    
 
                     <div className="flex items-center flex-1 max-w-md mx-4 gap-2">
                         <input
@@ -42,8 +44,12 @@ function Navbar() {
                         </button>
                         </div>
                     <div className='flex gap-4 font-medium'>
-                        Categorias
-                        Cadastrar Categoria
+                        <Link to="/categorias" className="hover:underline">
+                            Categorias
+                        </Link>
+                        <Link to="/cadastrarcategoria" className="hover:underline">
+                            Cadastrar Categoria
+                        </Link>
                         <UserCircleIcon size={32} color="#163725" />
                         <BasketIcon size={32} color="#163725" />
                     </div>
